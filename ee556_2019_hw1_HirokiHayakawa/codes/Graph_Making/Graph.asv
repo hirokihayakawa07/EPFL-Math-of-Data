@@ -1,0 +1,32 @@
+clear all
+load GD_data
+load AGD_data
+load AdaGrad_data
+% load LSAGDR_data
+load fs_opt
+
+colors = hsv(13);
+
+figure
+loglog(GD_data - fs_opt,'LineWidth',3,'color',colors(1,:)); hold on;
+loglog(AGD_data - fs_opt,'LineWidth',3,'color',colors(3,:)); hold on;
+loglog(AGDR_data - fs_opt,'LineWidth',3,'color',colors(7,:));
+% loglog(LSAGDR_data - fs_opt,'LineWidth',3,'color',colors(8,:),'LineStyle',':');
+legend('AGD','AGDR','LSAGDR','FontSize', 15, 'Location', 'best');
+axis tight
+ylim([1e-9,1e0])
+xlabel('# iteration', 'FontSize',16);
+ylabel('f(x) - f^*', 'FontSize',20);
+grid on
+hold off
+
+% figure
+% semilogy(GD_data - fs_opt_data,'-o', 'LineWidth',3,'color',colors(1,:)); hold on;
+% semilogy(GDstr_data - fs_opt_data,'-o', 'LineWidth',3,'color',colors(2,:));
+% axis tight
+% xlim([1,5])
+% ylim([1e-4,1e0])
+% xlabel('# iteration', 'FontSize',16);
+% ylabel('$f(\mathbf{x}^k) - f^\star$', 'Interpreter', 'latex', 'FontSize',18)
+% legend('GD','GDstr', 'FontSize', 15, 'Location', 'best');
+% grid on
